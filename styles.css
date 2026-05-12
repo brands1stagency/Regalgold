@@ -1,0 +1,688 @@
+/* *********************************
+ * CSS for Regal Gold
+ * Author: Viggie
+ * Created: 2026-03-09
+ * This stylesheet is the master css file for the Regal Gold theme. It includes all the necessary styles to create a luxurious and elegant look for the website. The color scheme is based on gold and black, with accents of white and gray to add contrast and depth. The typography is chosen to complement the regal theme, with a mix of serif and sans-serif fonts. Overall, this stylesheet aims to create a visually stunning and cohesive design that reflects the opulence and grandeur of the Regal Gold theme.
+ * ********************************* */
+/* Global Reset */
+ html, body {
+  overflow-x: hidden;
+}
+/* Global Styles */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+header {
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+header:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.top-bar, .bottom-bar {
+    background-color: #ebf8ff;
+    padding: 5px 0;
+    font-size: 0.7em;
+    color: #1d2c5a;
+}
+.bottom-bar {
+    font-size: 0.6em;
+    padding: 3px 0;
+}
+nav {    
+    background-color: #1f2857;
+}
+nav .navbar-brand img {
+    height: 50px;
+}
+nav .navbar-nav .nav-item {
+    margin-left: 20px;
+}
+nav .navbar-nav .nav-link {
+    font-size: 0.9rem;
+    border-bottom: 1px solid transparent;
+}
+nav .navbar-nav .nav-link:hover {
+    text-decoration: none;
+    border-bottom: 1px solid white;
+}
+/* Footer Styles */
+footer {    
+    background-color: #1b2d5a;
+    text-align: center;
+    color: white;
+    font-size: 0.8em;
+}
+footer .location-info {
+    position: relative;
+    text-align: left;
+    padding-left: 15px;
+}
+footer .location-info #location-bottom {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    text-align: right;
+}
+/* Footer link underline animation on hover */
+footer a {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ff9500;
+    transition: width 0.3s ease;
+}
+footer a:hover::after {
+    width: 100%;
+}
+
+footer .social-icons a {
+    color: #c8c8c8;
+    transition: color 0.3s ease;
+    border: 1px solid #c8c8c8;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 1.2em;
+    text-align: right;
+}
+footer .social-icons a::after {
+    background-color: transparent;
+}
+.go-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff9500;
+    color: #1b2d5a;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    font-weight: bold;
+}
+.lighter-bg {
+    background-color: #ebf8ff;
+}
+
+/* Home Page Styles */
+h1, h2, h3, .btn {
+    font-family: "Raleway", sans-serif;
+}
+.card-title {
+    font-family: "Bodoni Moda SC", serif;
+}
+.btn-primary {
+    background-color: #1f2857;
+    border-color: #1f2857;
+}
+.btn-primarylite {
+    background-color: #2e3c84;
+    border-color: #2e3c84;
+    color: white;
+}
+.btn-primary:hover, .btn-primarylite:hover {
+    background-color: #1b2d5a;
+    border-color: #1d2c5a;
+}
+
+/* zoom effect & subtle shadow for product cards */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Zoom effect for images */
+.img-fluid {
+    transition: transform 0.3s ease;
+}
+.img-fluid:hover {
+    transform: scale(1.05);
+}
+/* zoom effect for buttons */
+.btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 149, 0, 0.3);
+    text-decoration: none;
+}
+
+/* Gold accent for icons */
+.gold-accent {
+    color: #ff9500;
+}
+.dark-gold {
+    color: #7c5b09;
+}
+
+/* Hero Section */
+#home-hero, #collection-hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+#collection-hero {
+    background: linear-gradient(135deg, rgba(31, 40, 87, 0.4) 0%, rgba(255, 149, 0, 0.1) 100%), url('assets/images/wb-2.png') center/cover no-repeat;
+}
+#home-hero.hero-section {
+    background: linear-gradient(135deg, rgba(31, 40, 87, 0.4) 0%, rgba(255, 149, 0, 0.1) 100%), url('assets/images/home-page-main-Banner.png') center/cover no-repeat;
+}
+
+/* Hero Slideshow */
+.hero-slideshow {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    z-index: 5;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(31, 40, 87, 0.4) 0%, rgba(255, 149, 0, 0.1) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding: 120px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero-content .container {
+    width: 100%;
+}
+
+.hero-indicators {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.indicator.active {
+    background-color: #ff9500;
+    transform: scale(1.3);
+    border-color: #ff9500;
+}
+
+.indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+#home-hero h1, #collection-hero h1 {
+    font-size: 4.8em;
+    font-weight: 300;
+    color: #e3e3e3;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+#home-hero h1 b, #collection-hero h1 b {
+    font-weight: 500;
+}
+#home-hero p, #collection-hero p {
+    font-size: 1.9em;
+    color:#e3e3e3;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+#home-hero .btn {
+    font-size: 1.2em;
+    padding: 10px 30px;
+}
+#home-hero img {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    animation-duration: 1s !important;
+}
+
+/* ================================
+   ENHANCED ANIMATIONS & TRANSITIONS
+   ================================ */
+
+/* Navigation improvements */
+nav .navbar-nav .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+nav .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff9500;
+    transition: width 0.3s ease;
+}
+nav .navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+nav .navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Collection page styles */
+.Cormorant {
+    font-family: "Cormorant", serif;
+}
+.Bodoni {
+    font-family: "Bodoni Moda SC", serif;
+}
+.collection-section {
+    border-top: 1px solid #e3e3e3;
+}
+.collection-title {
+    font-family: "Cormorant", serif;
+    font-family: "Bodoni Moda SC", serif;
+    font-size: 4em;
+    font-weight: 400;
+    color: #7c5b09;
+    margin-bottom: 20px;
+}
+.collection-subtitle {
+    font-size: 1.8em;
+    color: #1f2857;
+    margin-bottom: 15px;
+}
+.collection-description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+
+/* Go-top button enhancements */
+.go-top {
+    transition: all 0.3s ease;
+}
+.go-top:hover {
+    background-color: #fff;
+    color: #ff9500;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(255, 149, 0, 0.4);
+}
+
+/* Enhanced card transitions */
+.card {
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card:hover {
+    border-color: #ff9500;
+    box-shadow: 0 12px 24px rgba(255, 149, 0, 0.15);
+}
+
+/* Enhanced image animations */
+.img-fluid {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                filter 0.5s ease;
+}
+.img-fluid:hover {
+    filter: brightness(1.1) drop-shadow(0 8px 16px rgba(31, 40, 87, 0.2));
+}
+
+/* AOS custom animations */
+@keyframes fade-in-zoom {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gold-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 149, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 149, 0, 0);
+    }
+}
+
+.fade-in-zoom {
+    animation: fade-in-zoom 0.6s ease-out;
+}
+
+.fade-in-left {
+    animation: fade-in-left 0.6s ease-out;
+}
+
+.fade-in-right {
+    animation: fade-in-right 0.6s ease-out;
+}
+
+.slide-down {
+    animation: slide-down 0.6s ease-out;
+}
+
+.slide-up {
+    animation: slide-up 0.6s ease-out;
+}
+
+.gold-glow {
+    animation: gold-glow 2s infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Links smooth transitions */
+a {
+    transition: all 0.3s ease;
+}
+
+.page_top {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/About-us-Page-banner.png');
+    background-size: cover;
+    background-position: top center;
+    color: white;
+}
+
+/* Lazy loading image fade-in */
+img[loading="lazy"] {
+    animation: fade-in-zoom 0.6s ease-out;
+}
+
+/* Scroll-down indicator animation (optional) */
+@keyframes bounce-down {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.scroll-indicator {
+    animation: bounce-down 2s infinite;
+}
+
+/* Button link pseudo-effects */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px;
+}
+
+.slideshow-card {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    max-height: 360px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.slideshow-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+}
+
+.slide {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.slide img {
+    max-width: 100%;
+    height: 230px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide:hover img {
+    transform: scale(1.3);
+}
+
+.slide.fade {
+    animation: fade-slide 0.4s ease-in-out;
+}
+
+@keyframes fade-slide {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(31, 40, 87, 0.1);
+    color: #fff;
+    border: none;
+    padding: 7px 9px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.slide-btn:hover {
+    background-color: rgba(255, 149, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.slide-btn.prev {
+    left: 10px;
+}
+
+.slide-btn.next {
+    right: 10px;
+}
+
+.slide-indicator {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: rgba(31, 40, 87, 0.3);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    #home-hero, #collection-hero {
+        min-height: 450px;
+    }
+    .hero-slideshow {
+        min-height: 450px;
+    }
+    #home-hero h1, #collection-hero h1 {
+        font-size: 2.4em;
+        margin-bottom: 20px;
+    }
+
+    .slide-btn {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+    
+    .slide-btn.prev {
+        left: 5px;
+    }
+    
+    .slide-btn.next {
+        right: 5px;
+    }
+    
+    .slide-indicator {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+        bottom: 8px;
+        right: 8px;
+    }
+
+    footer .location-info {
+        text-align: center;
+        padding-left: 5px;
+    }
+}
+
