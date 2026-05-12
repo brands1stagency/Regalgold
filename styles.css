@@ -64,8 +64,6 @@ footer {
 }
 footer .location-info {
     position: relative;
-    text-align: left;
-    padding-left: 15px;
 }
 footer .location-info #location-bottom {
     position: absolute;
@@ -558,6 +556,7 @@ img[loading="lazy"] {
     flex-direction: column;
     height: 100%;
     min-height: 300px;
+    overflow-x: hidden;
 }
 
 .slideshow-card {
@@ -648,6 +647,18 @@ img[loading="lazy"] {
     z-index: 5;
 }
 
+@media (min-width: 992px) {
+  .col-lg-2-4 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (max-width: 1024px) {
+    footer img {
+        max-width: 180px;
+    }
+}
 @media (max-width: 768px) {
     #home-hero, #collection-hero {
         min-height: 450px;
@@ -681,8 +692,18 @@ img[loading="lazy"] {
     }
 
     footer .location-info {
-        text-align: center;
-        padding-left: 5px;
+        padding: 15px 0;
     }
+    footer img {
+        max-width: 170px;
+    }
+}
+
+@media (max-width: 569px) {
+    footer .location-info #location-bottom {
+        position: static;
+        text-align: center;
+        padding: 0;
+    }    
 }
 
