@@ -256,7 +256,7 @@ h1, h2, h3, .btn {
 
 .hero-indicators {
     position: absolute;
-    bottom: 60px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -275,9 +275,9 @@ h1, h2, h3, .btn {
 }
 
 .indicator.active {
-    background-color: #ff9500;
+    background-color: #fba833;
     transform: scale(1.3);
-    border-color: #ff9500;
+    border-color: #fba833;
 }
 
 .indicator:hover {
@@ -305,7 +305,6 @@ h1, h2, h3, .btn {
 }
 #home-hero img {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
     animation-duration: 1s !important;
 }
 
@@ -370,7 +369,7 @@ nav .navbar-nav .nav-link.active::after {
 }
 .go-top:hover {
     background-color: #fff;
-    color: #ff9500;
+    color: #fba833;
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(255, 149, 0, 0.4);
 }
@@ -661,14 +660,30 @@ img[loading="lazy"] {
 }
 @media (max-width: 768px) {
     #home-hero, #collection-hero {
-        min-height: 450px;
+        min-height: 250px;
     }
     .hero-slideshow {
-        min-height: 450px;
+        min-height: 250px;
+    }
+    .hero-content {
+        padding: 60px 0;
     }
     #home-hero h1, #collection-hero h1 {
-        font-size: 2.4em;
-        margin-bottom: 20px;
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    #home-hero p, #collection-hero p {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    #home-hero .btn {
+        font-size: 1em;
+        padding: 9px 12px;
+        text-wrap-mode: nowrap;
+    }
+    .indicator {
+        width: 9px;
+        height: 9px;
     }
 
     .slide-btn {
@@ -699,7 +714,24 @@ img[loading="lazy"] {
     }
 }
 
-@media (max-width: 569px) {
+@media (max-width: 576px) {
+    .hero-content {
+        padding: 40px 0;
+    }
+    #home-hero h1, #collection-hero h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    #home-hero p, #collection-hero p {
+        font-size: 0.8em;
+        margin-bottom: 6px;
+    }
+    #home-hero .btn {
+        font-size: 0.8em;
+        padding: 7px 10px;
+        text-wrap-mode: nowrap;
+    }
+
     footer .location-info #location-bottom {
         position: static;
         text-align: center;
