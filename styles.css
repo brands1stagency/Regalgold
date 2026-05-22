@@ -609,7 +609,7 @@ img[loading="lazy"] {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(31, 40, 87, 0.1);
+    background-color: rgba(31, 40, 87, 0.03);
     color: #fff;
     border: none;
     padding: 7px 9px;
