@@ -226,7 +226,7 @@ if (empty($_SESSION['csrf_token'])) {
                             <a class="nav-link" href="collections.html">Collections</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact-us.html">Contact Us</a>
+                            <a class="nav-link active" href="contact-us.php">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -251,7 +251,9 @@ if (empty($_SESSION['csrf_token'])) {
             <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="800">
                 <div class="contact-form-section">
                     <h2>Send us a Message</h2>
+                    <div id="formMessage" class="alert" style="display: none; margin-bottom: 20px;"></div>
                     <form id="contactForm" novalidate>
+                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                         <div class="form-grid">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="fullName" name="fullName" placeholder=" " required>
@@ -343,7 +345,7 @@ if (empty($_SESSION['csrf_token'])) {
                         <li class="mb-2"><a href="index.html" class="text-decoration-none text-white">Home</a></li>
                         <li class="mb-2"><a href="about-us.html" class="text-decoration-none text-white">About Us</a></li>
                         <li class="mb-2"><a href="collections.html" class="text-decoration-none text-white">Collections</a></li>
-                        <li class="mb-2"><a href="contact-us.html" class="text-decoration-none text-white">Contact Us</a></li>
+                        <li class="mb-2"><a href="contact-us.php" class="text-decoration-none text-white">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-3">
@@ -396,28 +398,85 @@ if (empty($_SESSION['csrf_token'])) {
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="assets/js/script.js"></script>
     <script>
-        // Form Validation
+        // Form Validation and Submission
         const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
         
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
             event.stopPropagation();
 
-            // Validate form
+            // Client-side validation
             if (contactForm.checkValidity() === false) {
                 contactForm.classList.add('was-validated');
-            } else {
-                // Form is valid
-                contactForm.classList.add('was-validated');
-                
-                // Show success message (you can replace this with actual form submission)
-                alert('Thank you for your message! We will get back to you soon.');
-                
-                // Reset form
-                contactForm.reset();
-                contactForm.classList.remove('was-validated');
+                showMessage('Please fill in all required fields correctly.', 'error');
+                return;
             }
+
+            // Disable submit button
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="ri-loader-4-line" style="animation: spin 1s linear infinite;"></i> Sending...';
+
+            // Prepare form data
+            const formData = new FormData(contactForm);
+
+            // Submit form via AJAX
+            fetch('handle-contact-form.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 429) {
+                        throw new Error('Please wait before submitting another message');
+                    } else if (response.status === 403) {
+                        throw new Error('Security validation failed. Please refresh the page.');
+                    } else if (response.status === 400) {
+                        return response.json().then(data => {
+                            throw new Error(data.errors ? data.errors.join(', ') : 'Validation error');
+                        });
+                    }
+                    throw new Error('Server error. Please try again later.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    showMessage(data.message, 'success');
+                    contactForm.reset();
+                    contactForm.classList.remove('was-validated');
+                } else {
+                    showMessage(data.error || 'An error occurred. Please try again.', 'error');
+                }
+            })
+            .catch(error => {
+                showMessage(error.message || 'An error occurred. Please try again.', 'error');
+            })
+            .finally(() => {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            });
         });
+
+        // Show message helper
+        function showMessage(message, type) {
+            formMessage.textContent = message;
+            formMessage.className = 'alert alert-' + (type === 'success' ? 'success' : 'danger');
+            formMessage.style.display = 'block';
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Auto-hide success message after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }
+        }
 
         // Real-time validation for email
         const emailInput = document.getElementById('email');
@@ -454,5 +513,11 @@ if (empty($_SESSION['csrf_token'])) {
             return phoneRegex.test(phone);
         }
     </script>
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
